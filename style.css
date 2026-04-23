@@ -1,0 +1,448 @@
+/* RICKARD ENGSTRÖM */
+
+/* ====================
+         TYPSNITT
+   ==================== */
+
+/* Nunito */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+/* Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* ====================
+    GRUNDINSTÄLLNINGAR
+   ==================== */
+
+/* CSS Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Nunito, sans-serif;
+  background-color: #fef9f3;
+  color: #1f1f1c;
+  line-height: 1.6;
+  font-size: 1rem;
+  padding: 2rem;
+}
+
+/* Lista */
+ul {
+  list-style: none;
+}
+
+/* Rubriker */
+h1 {
+  font-family: Poppins, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: Poppins, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+h3 {
+  font-family: Poppins, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+/* Paragrafer */
+p {
+  max-width: 65ch;
+  overflow-wrap: break-word;
+}
+
+/* Knappar */
+button {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.4s ease;
+}
+
+/* Filter fält */
+select {
+  background-color: hsla(60, 5%, 12%, 0.08);
+  color: #1f1f1c;
+  padding-left: 4px;
+  height: 2.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Märkningar */
+label {
+  display: block;
+  font-weight: bold;
+}
+
+/* Input fält */
+input {
+  font-size: 1rem;
+}
+
+/* Stäng knappar */
+.close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 2rem;
+  width: 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 100%;
+  background-color: #fef9f3;
+  color: #1f1f1c;
+  border: 1px solid #1f1f1c;
+  transition: 0.2s ease;
+}
+
+.close-button::before {
+  content: "×";
+}
+
+.close-button:hover {
+  background-color: #1f1f1c;
+  color: #fef9f3;
+  border: 1px solid #1f1f1c;
+}
+
+/* ====================
+         SIDHUVUD
+   ==================== */
+
+header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+/* Div som innehåller sök, filter och knapp */
+.search-filter-box {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Filter fält */
+header select {
+  width: 8rem;
+}
+
+/* Sökfält */
+#search {
+  width: 14rem;
+  height: 2.5rem;
+  background-color: hsla(60, 5%, 12%, 0.08);
+  border: none;
+  border-radius: 4px;
+  padding-left: 8px;
+}
+
+/* Lägg till recept knapp */
+#add-recipe-button {
+  background-color: #2fbf71;
+  color: #fffffa;
+}
+
+#add-recipe-button:hover {
+  background-color: #185e37;
+}
+
+/* ====================
+       RECEPTLISTA
+   ==================== */
+
+#recipe-list {
+  padding: 2rem 0;
+  justify-items: center;
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: #1f1f1c;
+}
+
+/* Grundlayout för receptkort */
+.recipe-card {
+  position: relative;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  filter: drop-shadow(0px 8px 8px hsla(60, 5%, 12%, 0.501));
+  transition: 0.4s ease;
+}
+
+.recipe-card:hover {
+  filter: drop-shadow(0px 16px 16px hsla(60, 5%, 12%, 0.908));
+}
+
+/* Bild */
+.recipe-card img {
+  display: block;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+/* Meta text */
+.recipe-card-info {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 1rem;
+  color: #fffffa;
+  background-color: hsla(70, 11%, 11%, 0.753);
+}
+
+.recipe-card-category {
+  color: #2fbf71;
+  font-weight: bold;
+}
+
+.recipe-card-difficulty {
+  color: #ff8600;
+  font-weight: bold;
+}
+
+/* =========================
+   FORMULÄR-Lägg till recept
+   ========================= */
+
+.add-recipe-box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 0%, 0.5);
+  z-index: 999;
+}
+
+/* Innehåll */
+.form-content {
+  background: #fef9f3;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  margin: 5vh auto;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* Rubrik */
+.add-recipe-box h2 {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #1f1f1c;
+}
+
+/* Formulär */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input fält */
+form input {
+  width: 100%;
+  padding: 4px;
+  background-color: #fffffa;
+  border-radius: 4px;
+  border: 1px solid #1f1f1c;
+}
+
+/* Textfält */
+form textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 4px;
+  resize: vertical;
+  font-size: 1rem;
+  background-color: #fffffa;
+  border-radius: 4px;
+  border: 1px solid #1f1f1c;
+}
+
+/* Filter fält */
+form select {
+  background-color: #fffffa;
+  border: 1px solid #1f1f1c;
+}
+
+/* Spara knapp */
+.add-recipe-box button {
+  display: flex;
+  justify-content: center;
+  background-color: #2fbf71;
+  color: #fffffa;
+}
+
+.add-recipe-box button:hover {
+  background-color: #185e37;
+}
+
+/* ====================
+     RECEPTVY FÖNSTER
+   ==================== */
+.active-recipe-box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 0%, 0.5);
+  z-index: 999;
+}
+
+/* Receptnamn */
+.active-recipe-box h2 {
+  padding-bottom: 1rem;
+}
+
+/* Innehåll */
+.active-recipe-box-content {
+  background: #fef9f3;
+  max-width: 650px;
+  width: 90%;
+  max-height: 90vh;
+  margin: 5vh auto;
+  padding: 2rem;
+  position: relative;
+  overflow-y: auto;
+}
+
+#recipe-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Underrubriker */
+#recipe-details h3 {
+  font-weight: bold;
+}
+
+/* Kategori + svårighetsgrad box */
+.active-recipe-meta {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Kategori text */
+.active-recipe-category {
+  color: #2fbf71;
+}
+
+/* Svårighetsgrad text */
+.active-recipe-difficulty {
+  color: #ff8600;
+}
+
+/* Bevarar radbrytningar för instruktioner */
+#instructions-text {
+  white-space: pre-wrap;
+}
+
+/* Bild */
+.recipe-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Radera knapp */
+#deleteButton {
+  display: flex;
+  justify-content: center;
+  color: #fef9f3;
+  background-color: #d23c3c;
+  width: 100%;
+}
+
+#deleteButton:hover {
+  background-color: #7a2323;
+}
+
+/* ====================
+         SIDFOT
+   ==================== */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  padding: 1rem;
+  color: #1f1f1c;
+}
+
+#delete-data {
+  cursor: pointer;
+  text-decoration: underline;
+  opacity: 0.5;
+}
+
+#delete-data:hover {
+  opacity: 1;
+}
+
+/* ========================
+   Responsiva inställningar
+   ======================== */
+
+/* Liten dator/surfplatta i landskapsvy */
+@media (max-width: 1024px) {
+  #recipe-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Surfplatta i porträttvy */
+@media (max-width: 768px) {
+  #recipe-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobil start */
+@media (max-width: 500px) {
+  #recipe-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

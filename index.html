@@ -1,0 +1,162 @@
+<!-- RICKARD ENGSTRÖM -->
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Rickard Engström" />
+    <meta name="description" content="Den bästa receptappen!" />
+    <title>Receptlådan</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Javascript -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>RECEPTLÅDAN</h1>
+
+      <!-- Sökfält, filter och lägg till recept knapp -->
+      <div class="search-filter-box">
+        <div>
+          <label for="search">Sök</label>
+          <input
+            type="text"
+            id="search"
+            placeholder="Sök efter recept/ingrediens"
+          />
+        </div>
+
+        <div>
+          <label for="filter-category">Kategori</label>
+          <select id="filter-category">
+            <option value="all">Alla</option>
+            <option value="starter">Förrätt</option>
+            <option value="main-course">Huvudrätt</option>
+            <option value="dessert">Dessert</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="filter-difficulty">Svårighetsgrad</label>
+          <select id="filter-difficulty">
+            <option value="all">Alla</option>
+            <option value="easy">Lätt</option>
+            <option value="medium">Medel</option>
+            <option value="hard">Svår</option>
+          </select>
+        </div>
+        <button id="add-recipe-button">Lägg till ett recept</button>
+      </div>
+    </header>
+    <main>
+      <!-- 
+        ============ Recept formulär ============ 
+      -->
+      <!-- Popup för att lägga till nytt recept -->
+      <div id="add-recipe-box" class="add-recipe-box">
+        <div class="form-content">
+          <span id="close-form" class="close-button"></span>
+          <h2>Lägg till nytt recept</h2>
+          <form id="add-recipe-form">
+            <!-- Receptnamn -->
+            <div>
+              <label for="recipe-name">Receptnamn</label>
+              <input
+                type="text"
+                id="recipe-name"
+                placeholder="Ex. Lasagne"
+                required
+              />
+            </div>
+
+            <!-- Bild via url -->
+            <div>
+              <label for="image-url">Bild (URL)</label>
+              <input
+                type="url"
+                id="image-url"
+                placeholder="https://exempel.se/bild.jpg"
+              />
+            </div>
+
+            <!-- Ingredienser -->
+            <div>
+              <label for="ingredients">Ingredienser</label>
+              <textarea
+                id="ingredients"
+                placeholder="Skriv en ingrediens per rad"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Instruktioner -->
+            <div>
+              <label for="instructions">Instruktioner</label>
+              <textarea
+                id="instructions"
+                placeholder="Beskriv hur receptet tillagas"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Kategori -->
+            <div>
+              <label for="category">Kategori</label>
+              <select id="category" required>
+                <option value="">Välj kategori</option>
+                <option value="starter">Förrätt</option>
+                <option value="main-course">Huvudrätt</option>
+                <option value="dessert">Dessert</option>
+              </select>
+            </div>
+
+            <!-- Svårighetsgrad -->
+            <div>
+              <label for="difficulty">Svårighetsgrad</label>
+              <select id="difficulty" required>
+                <option value="">Välj svårighetsgrad</option>
+                <option value="easy">Lätt</option>
+                <option value="medium">Medel</option>
+                <option value="hard">Svår</option>
+              </select>
+            </div>
+
+            <!-- Spara recept knapp -->
+            <button type="submit">Spara recept</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- 
+        ==============  Receptlista  ============= 
+      -->
+      <section class="recipe-list-section">
+        <h2>SPARADE RECEPT</h2>
+
+        <!-- Javascript fyller denna div dynamiskt med recept-->
+        <div id="recipe-list"></div>
+      </section>
+
+      <!-- 
+        ========= Aktivt recept fönster ========== 
+      -->
+      <div id="recipe-content-box" class="active-recipe-box">
+        <div class="active-recipe-box-content">
+          <span id="close-recipe" class="close-button"></span>
+          <div id="recipe-details"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 
+        ==== Sidfot med radera all data knapp ====
+      -->
+    <footer>
+      <p>Skapad av Rickard Engström - Examinationsprojekt</p>
+      <p id="delete-data">Radera all data</p>
+    </footer>
+  </body>
+</html>
