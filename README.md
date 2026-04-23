@@ -2,7 +2,7 @@
 
 A simple recipe app built with JavaScript using localStorage for persistent data
 
-![Preview](./preview.png)
+![Preview](./preview.webp)
 
 ## Features
 - Add and remove recipes
