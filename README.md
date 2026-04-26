@@ -16,7 +16,7 @@ A simple recipe app built with JavaScript using localStorage for persistent data
 - JavaScript
 
 ## Live Demo
-link here
+[link](https://engstrom.design/demos/recipe-app/index.html)
 
 ## About the project
 This project was built as part of a course assignment. The focus was on working with DOM manipulation, event handling and storing data in localStorage
